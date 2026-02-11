@@ -2,7 +2,7 @@
 body {  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         margin: 0;
         height: 100%;
-        background-image: linear-gradient(to bottom, #9d7eb3, #FFFFFF);
+        background-image: linear-gradient(to bottom, #7eb381, #FFFFFF);
         background-repeat: no-repeat;
         background-attachment: fixed;
         color: #000000;
@@ -20,7 +20,7 @@ main {
 }
 
 header {
-        background-color: #372242;
+        background-color: #00441a;
         padding: 1.5em;
         text-align: center;
         background-image: url();
@@ -56,7 +56,7 @@ nav a:link {
     color:#000000;
 }
 nav a:hover {
-    color:#49008d;
+    color:#02ad2d;
 }
 nav a:visited {
     color:#000000;

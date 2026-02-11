@@ -15,7 +15,7 @@ main {
     display: block;
     padding-bottom: 0em;
     padding-top: 2em;
-    padding-left: 15em;
+    padding-left: 4em;
     padding-right: 1em;
 }
 
@@ -73,3 +73,25 @@ section {
       padding-left: .5em;
       padding-right: .5em;
 }
+
+table { margin: auto;
+        border: 1px solid #000000;
+        width: 10%;
+        text-align: center;
+        border-collapse: collapse;
+}
+
+td, th 
+{
+      padding: 15px;
+      border: 1px solid #033507;
+}
+td
+{
+      text-align: center;
+}
+.text
+{
+      text-align: center;
+}
+tr:nth-of-type(odd) { background-color: #8ab378;}

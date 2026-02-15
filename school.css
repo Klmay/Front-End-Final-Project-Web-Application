@@ -1,5 +1,6 @@
 * { box-sizing: border-box; }
-body {  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+body {  font-family:"Inter", "Segoe UI", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        line-height: 1.6;
         margin: 0;
         padding: 0;
         height: 100%;
@@ -24,7 +25,6 @@ header {
         background-color: #00441a;
         padding: 1.5em;
         text-align: center;
-        
 }
 
 h1 {
@@ -36,11 +36,17 @@ h2 {
 }
 
 nav {
- margin: 0;
+    margin: 0;
     border: none;
     font-size: 1.2em;
+    font-weight: 500;
     text-align: center;
+    text-decoration: none;
     background-color: #088022;
+}
+
+nav a {
+    margin: 0 20px;
 }
 
 header a:link {
@@ -54,19 +60,23 @@ header a:visited {
 }
 
 nav a:link {
-    color:#000000;
+    color:#ffffff;
 }
 nav a:hover {
     color:#000000;
+    text-decoration: underline;
 }
 nav a:visited {
     color:#000000;
 }
 
 footer {
+        margin-top: 40px;
         text-align: center;
         font-size: .70em;
         font-style: italic;
+        color: #777777;
+        border-top: 1px solid #ffffff;
         padding: 3em;
 }
 
@@ -83,13 +93,17 @@ footer {
 section {
       padding-left: .5em;
       padding-right: .5em;
+      margin-top: 24px;
 }
 
-table { margin: auto;
-        border: 1px solid #000000;
-        width: 10%;
-        text-align: center;
-        border-collapse: collapse;
+table { 
+    margin: auto;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    width: 10%;
+    text-align: center;
+    border-collapse: collapse;
+    overflow: hidden;
 }
 
 td, th 
@@ -106,3 +120,10 @@ td
       text-align: center;
 }
 tr:nth-of-type(odd) { background-color: #8ab378;}
+tr:nth-child(even) {
+    background: #f3f7f9;
+}
+
+.content-box {
+    background: rgb(255, 255, 255);
+}

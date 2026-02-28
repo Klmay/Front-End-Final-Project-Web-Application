@@ -2,10 +2,12 @@
 addEventListener("DOMContentLoaded", async function(){
     const response = await fetch("http://localhost:3000/api/class")
     const courses = await response.json()
-    let html =""
+    let html = ""
     for (let course of courses){
         let classID = course._id
-       html+= `<li>${course.Course} - ${course.CreditHours} - ${course.teacher} - <a href ="details.html?=${ classID }"> Details </a>    </li>`
+        html += `<li>${course.Course} - ${course.CreditHours} - ${course.teacher} -
+         <a href="details.html?id=${classID}">Details</a> - <a href="edit.html?id=${classID}">Edit</a></li>`
     }
-   document.querySelector("#list_of_class").innerHTML = html
+    document.querySelector("#list_of_class").innerHTML = html
 })
+   

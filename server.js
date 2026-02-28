@@ -39,3 +39,47 @@ console.log(err)
 
     }
 })
+
+
+//grab a single class from the database
+router.get("/class/:id", async (req,res)=>{
+    try{
+      const oneclass = await Class.findById(req.params.id)
+      res.json(oneclass)
+    }
+    catch(err){
+        res.status(400).send(err)
+    }
+})
+
+// Delete a class
+router.delete("/class/:id", async (req, res) => {
+    try {
+        const oneclass = await Class.findById(req.params.id);
+        if (!oneclass) {
+            return res.status(404).send({ error: "Class not found" });
+        }
+
+        await Class.deleteOne({ _id: req.params.id });
+        res.sendStatus(204); // No Content
+    } catch (err) {
+        console.error(err);
+        res.status(400).send(err);
+    }
+});
+
+
+//update a class
+router.put("/class/:id", async (req,res)=>{
+    //first we need to find and update the class the front wants
+    // we need a request the id of class form the request
+    try{
+         const oneclass = req.body
+         await  Class.updateOne({_id :req.params.id},oneclass)
+         console.log(oneclass)
+         res.sendStatus(204)
+    }
+    catch(err){
+        res.status(400).send(err)
+    }
+})

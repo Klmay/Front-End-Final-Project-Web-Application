@@ -12,7 +12,7 @@ console.log("works")
 
 
 
-//this is to get everything form the datebase
+//this is to get everything form the database
 
 router.get("/class",async(req,res)=>{
     try{
@@ -26,7 +26,7 @@ console.log(err)
 
 })
 
-// add class to the date base
+// add class to the database
     router.post("/class", async(req,res)=>{
     try{
         const newClass =  await new Class(req.body)

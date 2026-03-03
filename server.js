@@ -2,6 +2,7 @@ const express = require("express")
 var cors = require('cors');
 const Class = require("./models/school");
 const bodyParser = require('body-parser')
+const jwt = require('jwt-simple')
 const User = require("./models/users")
 const app = express();
 app.use(cors());
@@ -24,7 +25,7 @@ username: req.body.username,
 password: req.body.password,
 staus: req.body.status
 })
-try{
+try{ 
     await newUser.save()
     console.log(newUser)
     res.sendStatus(201)//created
@@ -137,7 +138,7 @@ let user = await User.findOne({username: req.body.username})
             //we could do this with a boolean or a number value i.e if auth = 0 your are not authorized,
             //if auth equals 1 you are good
             username2 = user.username
-            const token = jwt.endcode({username: user.username},secret)
+            const token = jwt.encode({username: user.username},secret)
             const auth = 1
             //respond with the token
             res.json({

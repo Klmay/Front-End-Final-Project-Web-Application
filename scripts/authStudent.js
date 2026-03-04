@@ -1,6 +1,7 @@
 class Auth {
     constructor() {
-        document.querySelector("body").style.display = "none";
+        this.body = document.body;
+        this.body.style.display = "none";
 
         const auth = localStorage.getItem("auth");
         this.validateAuth(auth);
@@ -8,23 +9,17 @@ class Auth {
 
     validateAuth(auth) {
 
-        // Not logged in
         if (!auth) {
             window.location.replace("/login.html");
             return;
         }
 
-        // Admin can access everything
-        else if (auth === "3") {
-            document.querySelector("body").style.display = "block";
+        if (auth === "1") {
+            this.body.style.display = "block";
             return;
         }
 
-        // Must match page level
-        else {
-            window.location.replace("/unauthorized.html");
-            return;
-        }
+        window.location.replace("/unauthorized.html");
     }
 
     logOut() {
@@ -34,4 +29,3 @@ class Auth {
         window.location.replace("/login.html");
     }
 }
-     

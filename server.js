@@ -23,7 +23,7 @@ if(!req.body.username || !req.body.password){
  const newUser = await new User({
 username: req.body.username,
 password: req.body.password,
-staus: req.body.status
+privilege: req.body.privilege
 })
 try{ 
     await newUser.save()
@@ -139,7 +139,16 @@ let user = await User.findOne({username: req.body.username})
             //if auth equals 1 you are good
             username2 = user.username
             const token = jwt.encode({username: user.username},secret)
-            const auth = 1
+            if(user.privilege === "3"){
+             auth = 3
+            }
+            else if(user.privilege === "2"){
+                  auth = 2
+            }
+            else{
+                  auth = 1
+
+            }
             //respond with the token
             res.json({
                 username2,

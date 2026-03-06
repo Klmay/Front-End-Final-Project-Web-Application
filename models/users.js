@@ -3,6 +3,7 @@
   const User = db.model("User",{
      username:{type: String, required: true},
      password:{type: String, required: true },
-     privilege: String
+     privilege: String,
+     course: String
   })
   module.exports  = User;

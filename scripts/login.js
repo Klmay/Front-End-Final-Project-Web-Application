@@ -72,12 +72,16 @@ async function login(username, password) {
     let token = tokenResponse.token
     let uname = tokenResponse.username2
     let auth = tokenResponse.auth
+    //need for other code
+    let id = tokenResponse.id
 
     console.log(token)
 
     localStorage.setItem("token", token)
     localStorage.setItem("uname", uname)
     localStorage.setItem("auth", auth)
+    // this for other things
+   localStorage.setItem("id", id)
 
     window.location.replace("/index.html")
   } else {

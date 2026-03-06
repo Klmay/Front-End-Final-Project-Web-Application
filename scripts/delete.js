@@ -23,6 +23,8 @@ async function deleteClass() {
     if (response.ok) {
         getALLClass();
         alert("Class Deleted");
+        //test
+        location.reload();
     } else {
         document.querySelector("#error").innerHTML = "Cannot delete Class";
     }

@@ -4,28 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="school.css" rel="stylesheet">
-    <script src="scripts/showdate.js" defer></script>
+    <script src="scripts/userdata.js" defer></script>
+     
+      
    
+    
     <title>Course Management</title>
 </head>
 <body>
-  
     <header>
     <h1>School of Rock</h1>
     </header>
     <nav>
         <a href="index.html">Home</a> &nbsp; 
-        <a href="student.html">Student Portal Login</a> &nbsp; 
-	      <a href="teacher.html">Teacher Portal Login</a>
+        <a href="StudentPage.html">Student Portal Login</a> &nbsp; 
+	      <a href="TeacherPage.html">Teacher Portal Login</a>
+        
     </nav>
-    <div id="wrapper">
     
-    <h2>Course List.</h2>
+    <div id="wrapper">
+
 <main>
     <section>
-    <p>Paragraph 1</p>
+    <h2>Course List</h2>
+   
     </section>
-  <table border="1">
+    <div id="courseList">
    <table border="1">
     <thead>
         <tr>
@@ -37,12 +41,12 @@
     </thead>
     <tbody id="list_of_class"></tbody>
 </table>
-   
-    <tbody id="list_of_class"></tbody>
-</table>
-<divid="list_of_class"></div>
-  
+  </div>
+
 </main>
+<div>
+     <input type="button" value="LogOut" id="logout">
+</div>
 <footer>
   Copyright &copy; 2026 This is a School Project <br />
 </footer>

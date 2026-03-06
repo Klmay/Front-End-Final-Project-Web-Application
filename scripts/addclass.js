@@ -26,6 +26,8 @@ async function addclass() {
 
         //reset the form after done
         document.querySelector("form").reset()
+         //reload so you can see that the class was add to the list
+        location.reload();
     }
     else{
         document.querySelector("#error").innerHTML ="Cannot add class"

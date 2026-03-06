@@ -14,7 +14,7 @@ class Auth {
             return;
         }
 
-        if (auth === "3" || auth === "2") {
+        if (auth === "2" || auth === "3") {
             this.body.style.display = "block";
             return;
         }
@@ -23,9 +23,11 @@ class Auth {
     }
 
     logOut() {
+        alert("logout");
         localStorage.removeItem("auth");
         localStorage.removeItem("token");
         localStorage.removeItem("uname");
+        localStorage.removeItem("id");
         window.location.replace("/login.html");
     }
 }

@@ -10,7 +10,7 @@ async function addUser() {
     const User ={
     username: document.querySelector("#UserName").value,
      password: document.querySelector("#Password").value,
-     privilege: "1"
+     privilege: document.querySelector("#privilege").value
    
     }
     const response = await  fetch("http://localhost:3000/api/user",{
@@ -27,7 +27,7 @@ async function addUser() {
         //reset the form after done
         document.querySelector("form").reset()
         alert("User Add");
-          location.reload();
+        location.reload();
     }
     else{
         document.querySelector("#error").innerHTML ="Cannot add User"

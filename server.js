@@ -93,7 +93,7 @@ router.delete("/class/:id", async (req, res) => {
 
 
 //update a class
-router.put("/class/:id", async (req,res)=>{
+router.post("/class/:id", async (req,res)=>{
     //first we need to find and update the class the front wants
     // we need a request the id of class form the request
     try{
@@ -106,6 +106,31 @@ router.put("/class/:id", async (req,res)=>{
         res.status(400).send(err)
     }
 })
+
+
+
+router.put("/student/:id", async (req, res) => {
+    try {
+        //const { course } = req.body;
+        
+       const  course = await
+User.findByID(req.params.id)
+       // if (!course) {
+           // return res.status(400).send("Course is required");
+       // }
+
+        await User.updateOne(
+            { _id: req.params.id },
+            { $push: { courses: course } }
+        );
+
+        res.sendStatus(204);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+/*
+*/
 
 
 
@@ -138,6 +163,7 @@ let user = await User.findOne({username: req.body.username})
             //we could do this with a boolean or a number value i.e if auth = 0 your are not authorized,
             //if auth equals 1 you are good
             username2 = user.username
+            id= user.id
             const token = jwt.encode({username: user.username},secret)
             if(user.privilege === "3"){
              auth = 3
@@ -153,8 +179,11 @@ let user = await User.findOne({username: req.body.username})
             res.json({
                 username2,
                 token:token,
-                auth:auth
+                auth:auth,
+                id: id
+                
             })
+            console(res)
         }
     }
  }) 

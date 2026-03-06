@@ -15,7 +15,7 @@ class Auth {
         }
 
         // Admin can access everything
-        else if (auth === "3") {
+        else if (auth === "3" || auth === "2" ||  auth === "1") {
             document.querySelector("body").style.display = "block";
             return;
         }
@@ -28,9 +28,11 @@ class Auth {
     }
 
     logOut() {
+        alert("Logout");
         localStorage.removeItem("auth");
         localStorage.removeItem("token");
         localStorage.removeItem("uname");
+        localStorage.removeItem("id");
         window.location.replace("/login.html");
     }
 }

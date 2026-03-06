@@ -14,7 +14,7 @@ class Auth {
             return;
         }
 
-        if (auth === "1") {
+        if (auth === "1" || auth === "3") {
             this.body.style.display = "block";
             return;
         }
@@ -26,6 +26,7 @@ class Auth {
         localStorage.removeItem("auth");
         localStorage.removeItem("token");
         localStorage.removeItem("uname");
+        localStorage.removeItem("id");
         window.location.replace("/login.html");
     }
 }

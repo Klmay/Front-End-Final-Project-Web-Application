@@ -1,6 +1,7 @@
 const express = require("express")
 var cors = require('cors');
-const Class = require("./models/school");
+const Class = require("./models/school")
+const Chest = require("./models/chest")
 const bodyParser = require('body-parser')
 const jwt = require('jwt-simple')
 const User = require("./models/users")
@@ -11,10 +12,86 @@ const router = express.Router();
 const secret ="supersecret"
 app.use("/api",router);
 
-
 console.log("works")
 //start the server
 
+// create new chest
+router.post("/newchest", async (req, res) => {
+    const { userID } = req.body;
+    if (!userID) return res.status(400).json({ error: "Missing id" });
+
+    try {
+        const exists = await Chest.findOne({ userID });
+        if (exists) return res.status(400).json({ error: "Chest already exists" });
+
+        const newChest = new Chest({ userID, courses: [] });
+        await newChest.save();
+
+        res.status(201).json(newChest);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to create chest" });
+    }
+});
+
+// get all chests
+router.get("/allChest", async (req, res) => {
+    try {
+        const chests = await Chest.find({});
+        res.json(chests);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+});
+
+
+// Add a course to a chest
+router.post("/addCourse", async (req, res) => {
+    const { userID, course } = req.body;
+
+    if (!userID || !course) {
+        return res.status(400).json({ error: "Missing userID or course" });
+    }
+
+    try {
+        const chest = await Chest.findOne({ userID });
+        if (!chest) return res.status(404).json({ error: "Chest not found" });
+
+        // Add the course to the courses array
+        chest.courses.push(course);
+        await chest.save();
+
+        res.status(200).json(chest);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to add course" });
+    }
+});
+
+
+// Remove a course from a chest
+router.post("/removeCourse", async (req, res) => {
+    const { userID, course } = req.body;
+
+    if (!userID || !course) {
+        return res.status(400).json({ error: "Missing userID or course" });
+    }
+
+    try {
+        const chest = await Chest.findOne({ userID });
+        if (!chest) return res.status(404).json({ error: "Chest not found" });
+
+        // Remove the course from the courses array
+        chest.courses = chest.courses.filter(c => c !== course);
+        await chest.save();
+
+        res.status(200).json(chest);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to remove course" });
+    }
+});
 //creating a new user
 router.post("/user",async(req,res)=>{
 if(!req.body.username || !req.body.password){
@@ -109,28 +186,37 @@ router.post("/class/:id", async (req,res)=>{
 
 
 
-router.put("/student/:id", async (req, res) => {
-    try {
-        //const { course } = req.body;
-        
-       const  course = await
-User.findByID(req.params.id)
-       // if (!course) {
-           // return res.status(400).send("Course is required");
-       // }
 
-        await User.updateOne(
-            { _id: req.params.id },
-            { $push: { courses: course } }
-        );
 
-        res.sendStatus(204);
-    } catch (err) {
-        res.status(400).send(err);
-    }
-});
-/*
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

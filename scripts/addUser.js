@@ -11,6 +11,7 @@ async function addUser() {
     username: document.querySelector("#UserName").value,
      password: document.querySelector("#Password").value,
      privilege: "1"
+     
    
     }
     const response = await  fetch("http://localhost:3000/api/user",{

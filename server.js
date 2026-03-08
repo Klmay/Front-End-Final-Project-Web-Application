@@ -170,7 +170,8 @@ router.delete("/class/:id", async (req, res) => {
 
 
 //update a class
-router.post("/class/:id", async (req,res)=>{
+//post change to put
+router.put("/class/:id", async (req,res)=>{
     //first we need to find and update the class the front wants
     // we need a request the id of class form the request
     try{

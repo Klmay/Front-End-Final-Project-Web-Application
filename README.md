@@ -14,6 +14,8 @@ This is a full-stack web-application project that is designed to a school course
     * Subject
     * Credit Hours
     * Whatever else may need to go in this list
+##### : This is important to know
+When you make a new account, you are a student but if you want to be the teacher login with Teacher as your username and password is password. to Start server put npm run dev
 
 #### :student:Student Functionality
 * **Search** for courses by **name** or **course number**.
